@@ -1,6 +1,6 @@
 {
   "name": "redux-lazy",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "redux-lazy",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "url": "https://github.com/evheniy/redux-lazy/issues"
   },
   "homepage": "https://github.com/evheniy/redux-lazy#readme",
-  "dependencies": {
+  "peerDependencies": {
     "react": "^16.2.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2"
