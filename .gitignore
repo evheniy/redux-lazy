@@ -1,2 +1,4 @@
 .idea
+lib
+!lib/.gitkeep
 node_modules
