@@ -5,8 +5,9 @@ const toUnderscore = text => text.replace(/([A-Z])/g, $1 => `_${$1.toLowerCase()
 const toConst = text => toUnderscore(text).toUpperCase();
 
 class RL {
-  constructor(ns) {
+  constructor(ns, defaultState = null) {
     this.ns = ns.trim();
+    this.defaultState = defaultState;
     this.actions = [];
   }
 
@@ -54,6 +55,9 @@ class RL {
     const mapDispatchToProps = Object.assign({}, actions);
 
     const Container = Component => connect(mapStateToProps, mapDispatchToProps)(Component);
+
+    // full default state
+    Object.assign(defaultState, this.defaultState);
 
 
     return {

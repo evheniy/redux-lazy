@@ -1,6 +1,6 @@
 {
   "name": "redux-lazy",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "redux-lazy",
   "main": "lib/index.js",
   "files": [
@@ -34,31 +34,31 @@
   },
   "homepage": "https://github.com/evheniy/redux-lazy#readme",
   "peerDependencies": {
-    "react": "^16.2.0",
+    "react": "^16.3.2",
     "react-redux": "^5.0.7",
-    "redux": "^3.7.2"
+    "redux": "^4.0.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.2",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "eslint": "^4.18.2",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-react": "^7.8.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
     "gulp-clean-dest": "^0.2.0",
     "gulp-react": "^3.1.0",
     "husky": "^0.14.3",
-    "npm-run-all": "^4.1.2",
-    "react": "^16.2.0",
+    "npm-run-all": "^4.1.3",
+    "react": "^16.3.2",
     "react-redux": "^5.0.7",
-    "redux": "^3.7.2"
+    "redux": "^4.0.0"
   }
 }
