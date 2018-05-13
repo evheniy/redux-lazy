@@ -97,6 +97,14 @@ rl.addAction('idle', { status: 'idle' });
 rl.addAction('clear', { status: 'null' });
 ```
 
+Or with default state
+
+```javascript
+const defaultState = { status: null };
+
+const rl = new RL('testAction', defaultState);
+```
+
 #### Flush
 
 ```javascript
