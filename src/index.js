@@ -42,6 +42,9 @@ class RL {
       Object.assign(defaultState, action.payload);
     });
 
+    // full default state
+    Object.assign(defaultState, this.defaultState);
+
     const reducer = (state = defaultState, action) => {
       if (Object.values(types).includes(action.type)) {
         return Object.assign({}, state, action.payload);
@@ -50,15 +53,10 @@ class RL {
       return state;
     };
 
-
     const mapStateToProps = state => state[nameSpace];
     const mapDispatchToProps = Object.assign({}, actions);
 
-    const Container = Component => connect(mapStateToProps, mapDispatchToProps)(Component);
-
-    // full default state
-    Object.assign(defaultState, this.defaultState);
-
+    const Container = connect(mapStateToProps, mapDispatchToProps);
 
     return {
       nameSpace,
