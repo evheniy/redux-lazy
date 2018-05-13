@@ -2,6 +2,8 @@
 
 Generating constants, action types, action creators, reducers and containers.
 
+[![Build Status](https://travis-ci.org/evheniy/redux-lazy.svg?branch=master)](https://travis-ci.org/evheniy/redux-lazy)
+
 ## How to install
 
     npm i -D redux-lazy
