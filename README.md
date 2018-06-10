@@ -1,168 +1,64 @@
 # redux-lazy
 
-Generating constants, action types, action creators, reducers and containers.
+Generating constants, action types, action creators, reducers and containers for you.
 
+[![NPM](https://nodei.co/npm/redux-lazy.png)](https://npmjs.org/package/redux-lazy)
+
+[![npm version](https://badge.fury.io/js/redux-lazy.svg)](https://badge.fury.io/js/redux-lazy)
 [![Build Status](https://travis-ci.org/evheniy/redux-lazy.svg?branch=master)](https://travis-ci.org/evheniy/redux-lazy)
+[![Coverage Status](https://coveralls.io/repos/github/evheniy/redux-lazy/badge.svg?branch=master)](https://coveralls.io/github/evheniy/redux-lazy?branch=master)
+[![Linux Build](https://img.shields.io/travis/evheniy/redux-lazy/master.svg?label=linux)](https://travis-ci.org/evheniy/)
+[![Windows Build](https://img.shields.io/appveyor/ci/evheniy/redux-lazy/master.svg?label=windows)](https://ci.appveyor.com/project/evheniy/redux-lazy)
+
+[![Dependency Status](https://david-dm.org/evheniy/redux-lazy.svg)](https://david-dm.org/evheniy/redux-lazy)
+[![devDependency Status](https://david-dm.org/evheniy/redux-lazy/dev-status.svg)](https://david-dm.org/evheniy/redux-lazy#info=devDependencies)
+[![NSP Status](https://img.shields.io/badge/NSP%20status-no%20vulnerabilities-green.svg)](https://travis-ci.org/evheniy/redux-lazy)
+
+[![Known Vulnerabilities](https://snyk.io/test/github/evheniy/redux-lazy/badge.svg)](https://snyk.io/test/github/evheniy/redux-lazy)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/evheniy/redux-lazy/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/evheniy/redux-lazy.svg)](https://github.com/evheniy/redux-lazy/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/evheniy/redux-lazy.svg)](https://github.com/evheniy/redux-lazy/network)
+[![GitHub issues](https://img.shields.io/github/issues/evheniy/redux-lazy.svg)](https://github.com/evheniy/redux-lazy/issues)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/evheniy/redux-lazy.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
+
 
 ## How to install
 
-    npm i -D redux-lazy
-    
+     npm i -S redux-lazy
+
 ## How to use
-
-### Before
-
-#### Constants
-
-```javascript
-export const ACTIONS = '@@actions/ACTIONS';
-```
-
-#### Types
-
-```javascript
-export const ACTIONS_INIT = '@@actions/INIT';
-export const ACTIONS_IDLE = '@@actions/IDLE';
-export const ACTIONS_CLEAR = '@@actions/CLEAR';
-```
-
-#### Actions
-
-```javascript
-import * as constants from '../constants';
-
-export const initActions = () => ({
-  type: constants.ACTIONS_INIT,
-});
-
-export const idleActions = () => ({
-  type: constants.ACTIONS_IDLE,
-});
-
-export const clearActions = () => ({
-  type: constants.ACTIONS_CLEAR,
-});
-```
-
-#### Reducers
-
-```javascript
-import * as constants from '../constants';
-
-const status = 'null';
-
-const defaultState = {
-  status,
-};
-
-export default (state = defaultState, action) => {
-  switch (action.type) {
-    case constants.ACTIONS_INIT:
-      return { ...state, status: 'init' };
-    case constants.ACTIONS_IDLE:
-      return { ...state, status: 'idle' };
-    case constants.ACTIONS_CLEAR:
-      return { ...state, status };
-    default:
-      return state;
-  }
-};
-```
-
-#### Container
-
-```javascript
-import { connect } from 'react-redux';
-import Component from '../components';
-import { initActions, clearActions } from '../actions';
-import { ACTIONS } from '../constants';
-
-const mapStateToProps = state => state[ACTIONS];
-const mapDispatchToProps = { initActions, clearActions };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Component);
-```
-
-### Redux Lazy
-
-#### Using
 
 ```javascript
 import RL from 'redux-lazy';
 
-const rl = new RL('testAction');
+const rl = new RL('post');
 
-rl.addAction('init', { status: 'init' });
-rl.addAction('idle', { status: 'idle' });
-rl.addAction('clear', { status: 'null' });
-```
+rl.addAction('title', { title: '' });
 
-Or with default state
-
-```javascript
-const defaultState = { status: null };
-
-const rl = new RL('testAction', defaultState);
-```
-
-#### Flush
-
-```javascript
 const {
-  nameSpace, // '@@testAction/TEST_ACTION'
+  nameSpace,
   types,
   actions,
   defaultState,
   reducer,
+  mapStateToProps,
+  mapDispatchToProps,
   Container,
 } = rl.flush();
 ```
 
-#### Types
+## Articles
 
-```javascript
-const { 
-  TEST_ACTION_INIT, // '@@testAction/INIT'
-  TEST_ACTION_IDLE, // '@@testAction/IDLE',
-  TEST_ACTION_CLEAR, // '@@testAction/CLEAR'
-} = types;
-```
+**React — redux for lazy developers:**
+ * [Part 1](https://hackernoon.com/react-redux-for-lazy-developers-b551f16a456f)
+ * [Part 2](https://hackernoon.com/react-redux-for-lazy-developers-part-2-d0c60123592f)
+ * Part 3
 
-#### Actions
 
-```javascript
-const {
-  initAction,
-  idleAction,
-  clearAction,
-} = actions;
-```
+## Documentation
 
-#### All together
-
-```javascript
-const action = rl.flush();
-
-console.log(action);
-```
-
-#### Result
-
-    { nameSpace: '@@testAction/TEST_ACTION',
-      types: 
-       { TEST_ACTION_INIT: '@@testAction/INIT',
-         TEST_ACTION_IDLE: '@@testAction/IDLE',
-         TEST_ACTION_CLEAR: '@@testAction/CLEAR' },
-      actions: 
-       { initAction: [Function],
-         idleAction: [Function],
-         clearAction: [Function] },
-      defaultState: { status: 'null' },
-      reducer: [Function: reducer],
-      mapStateToProps: [Function: mapStateToProps],
-      mapDispatchToProps: 
-       { initAction: [Function],
-         idleAction: [Function],
-         clearAction: [Function] },
-      Container: [Function: Container] }
-
+ * [Install](https://github.com/evheniy/redux-lazy/blob/master/docs/install.md)
+ * [Types](https://github.com/evheniy/redux-lazy/blob/master/docs/types.md)
+ * [Actions](https://github.com/evheniy/redux-lazy/blob/master/docs/actions.md)
+ * [Reducer](https://github.com/evheniy/redux-lazy/blob/master/docs/reducer.md)
+ * [Container](https://github.com/evheniy/redux-lazy/blob/master/docs/container.md)
