@@ -64,3 +64,6 @@ describe('Testing types', () => {
  * [Actions](https://github.com/evheniy/redux-lazy/blob/master/docs/actions.md)
  * [Reducer](https://github.com/evheniy/redux-lazy/blob/master/docs/reducer.md)
  * [Container](https://github.com/evheniy/redux-lazy/blob/master/docs/container.md)
+
+
+[More examples](https://github.com/evheniy/redux-lazy/blob/master/tests/types.js)
