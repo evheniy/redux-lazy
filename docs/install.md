@@ -2,7 +2,7 @@
 
 ## How to install
 
-     npm i -D redux-lazy
+     npm i -S redux-lazy
      
 Or
 
