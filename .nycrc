@@ -1,0 +1,24 @@
+{
+  "extension": [".js",".jsx"],
+  "require": ["./tests/helper.js"],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "coverage",
+    "tests",
+    "gulpfile.js"
+  ],
+  "check-coverage": true,
+  "per-file": false,
+  "statements": 100,
+  "branches": 100,
+  "functions": 100,
+  "lines": 100,
+  "reporter": [
+    "lcov",
+    "text",
+    "text-summary",
+    "html"
+  ],
+  "all": true
+}
