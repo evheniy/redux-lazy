@@ -12,8 +12,9 @@ Generating constants, action types, action creators, reducers and containers for
 
 [![Dependency Status](https://david-dm.org/evheniy/redux-lazy.svg)](https://david-dm.org/evheniy/redux-lazy)
 [![devDependency Status](https://david-dm.org/evheniy/redux-lazy/dev-status.svg)](https://david-dm.org/evheniy/redux-lazy#info=devDependencies)
-[![NSP Status](https://img.shields.io/badge/NSP%20status-no%20vulnerabilities-green.svg)](https://travis-ci.org/evheniy/redux-lazy)
+[![peerDependencies Status](https://david-dm.org/evheniy/redux-lazy/peer-status.svg)](https://david-dm.org/evheniy/redux-lazy?type=peer)
 
+[![NSP Status](https://img.shields.io/badge/NSP%20status-no%20vulnerabilities-green.svg)](https://travis-ci.org/evheniy/redux-lazy)
 [![Known Vulnerabilities](https://snyk.io/test/github/evheniy/redux-lazy/badge.svg)](https://snyk.io/test/github/evheniy/redux-lazy)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/evheniy/redux-lazy/master/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/evheniy/redux-lazy.svg)](https://github.com/evheniy/redux-lazy/stargazers)
