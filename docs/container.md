@@ -23,7 +23,7 @@ Here we have 3 main points:
  * We need to create selector and put it to **[mapStateToProps](https://github.com/reduxjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options)**.
  * We need to create **[mapDispatchToProps](https://github.com/reduxjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options)**.
 
-After that we can use **connect** to wrap React component and put part od state using **selectors**.
+After that we can use **connect** to wrap React component and put part of state using **selectors**.
 
 ## Redux Lazy
 
