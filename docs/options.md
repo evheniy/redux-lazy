@@ -127,7 +127,7 @@ With payload:
 {
   type: types.POST_TITLE,
   title: 'title',
-  body: 'body'
+  body: 'body',
 }
 ```
 Or with default data:
@@ -141,7 +141,7 @@ With payload:
 {
   type: types.POST_TITLE,
   title: '',
-  body: ''
+  body: '',
 }
 ```
 
@@ -178,6 +178,5 @@ It returns:
  * [Actions](https://github.com/evheniy/redux-lazy/blob/master/docs/actions.md)
  * [Reducer](https://github.com/evheniy/redux-lazy/blob/master/docs/reducer.md)
  * [Container](https://github.com/evheniy/redux-lazy/blob/master/docs/container.md)
- * [Options](https://github.com/evheniy/redux-lazy/blob/master/docs/options.md)
 
 [More examples](https://github.com/evheniy/redux-lazy/blob/master/tests/actions.js)
