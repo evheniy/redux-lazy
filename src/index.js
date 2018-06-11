@@ -108,7 +108,7 @@ class RL {
 
     const reducer = (state = defaultState, action) => {
       if (Object.values(types).includes(action.type)) {
-        return Object.assign({}, state, action.payload);
+        return { ...state, ...action, ...action.payload };
       }
 
       return state;

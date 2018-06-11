@@ -92,5 +92,22 @@ describe('Testing reducer', () => {
 
       expect(state.test).to.be.equal(true);
     });
+
+    it('should test POST_TITLE action with asParams option', () => {
+      const title = 'title';
+
+      const newRl = new RL('post');
+
+      newRl.addAction('title', { title: '' }, { asParams: 'title' });
+
+      const {
+        types: newRlTypes,
+        reducer: newRlReducer,
+      } = rl.flush();
+
+      const state = newRlReducer(undefined, { type: newRlTypes.POST_TITLE, title });
+
+      expect(state.title).to.be.equal(title);
+    });
   });
 });
