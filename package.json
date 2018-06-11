@@ -1,6 +1,6 @@
 {
   "name": "redux-lazy",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "redux-lazy",
   "main": "lib/index.js",
   "files": [
@@ -73,6 +73,6 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-mock-store": "^1.5.1",
-    "sinon": "^5.1.1"
+    "sinon": "^6.0.0"
   }
 }
