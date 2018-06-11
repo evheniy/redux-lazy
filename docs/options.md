@@ -1,6 +1,6 @@
 # Options
 
-When you add action you can set the 3d parameter - options
+When you add action you can set the 3rd parameter - options
 
 ```javascript
 rl.addAction('title', payload, options);
