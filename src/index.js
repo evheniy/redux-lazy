@@ -51,7 +51,7 @@ class RL {
       if (action.options.isFormElement) {
         actions[actionKey] = (event) => {
           const payload = { ...action.payload };
-          if (event && event.target && event.target.value) {
+          if (event && event.target && event.target.value !== undefined) {
             const { target: { value } } = event;
             Object.keys(action.payload).forEach((key) => {
               payload[key] = value;
@@ -81,7 +81,7 @@ class RL {
               action.options.isFormElement &&
               args[number] &&
               args[number].target &&
-              args[number].target.value
+              args[number].target.value !== undefined
             ) ?
               args[number].target.value :
               args[number];
