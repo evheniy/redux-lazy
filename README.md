@@ -62,3 +62,4 @@ const {
  * [Actions](https://github.com/evheniy/redux-lazy/blob/master/docs/actions.md)
  * [Reducer](https://github.com/evheniy/redux-lazy/blob/master/docs/reducer.md)
  * [Container](https://github.com/evheniy/redux-lazy/blob/master/docs/container.md)
+ * [Options](https://github.com/evheniy/redux-lazy/blob/master/docs/options.md)

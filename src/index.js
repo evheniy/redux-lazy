@@ -11,8 +11,8 @@ class RL {
     this.actions = [];
   }
 
-  addAction(name, payload = {}) {
-    this.actions.push({ name, payload });
+  addAction(name, payload = {}, options = {}) {
+    this.actions.push({ name, payload, options });
   }
 
   getNSKey() {
@@ -33,10 +33,71 @@ class RL {
 
       // actions
       const actionKey = `${action.name}Action`;
-      actions[actionKey] = (payload = action.payload) => ({
-        type: `${this.getNSKey()}/${toConst(action.name)}`,
-        payload,
-      });
+
+      // submit form
+      if (action.options.isForm) {
+        actions[actionKey] = (event) => {
+          if (event && event.preventDefault) {
+            event.preventDefault();
+          }
+
+          return {
+            type: `${this.getNSKey()}/${toConst(action.name)}`,
+          };
+        };
+      }
+
+      // set data from input event (event.target.value)
+      if (action.options.isFormElement) {
+        actions[actionKey] = (event) => {
+          const payload = { ...action.payload };
+          if (event && event.target && event.target.value) {
+            const { target: { value } } = event;
+            Object.keys(action.payload).forEach((key) => {
+              payload[key] = value;
+            });
+          }
+
+          return {
+            type: `${this.getNSKey()}/${toConst(action.name)}`,
+            payload,
+          };
+        };
+      }
+
+      // map action({ data }) to action(data)
+      if (action.options.asParams) {
+        let params = action.options.asParams;
+        if (!Array.isArray(params)) {
+          params = [params];
+        }
+
+        const type = `${this.getNSKey()}/${toConst(action.name)}`;
+
+        actions[actionKey] = (...args) => {
+          const payload = {};
+          params.forEach((param, number) => {
+            const data = (
+              action.options.isFormElement &&
+              args[number] &&
+              args[number].target &&
+              args[number].target.value
+            ) ?
+              args[number].target.value :
+              args[number];
+            payload[param] = data || action.payload[param];
+          });
+
+          return { ...payload, type };
+        };
+      }
+
+      if (!Object.keys(action.options).length) {
+        actions[actionKey] = (payload = action.payload) => ({
+          type: `${this.getNSKey()}/${toConst(action.name)}`,
+          payload,
+        });
+      }
 
       // default state
       Object.assign(defaultState, action.payload);

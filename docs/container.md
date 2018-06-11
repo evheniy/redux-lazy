@@ -64,5 +64,6 @@ We can use **nameSpace** for selectors.
  * [Types](https://github.com/evheniy/redux-lazy/blob/master/docs/types.md)
  * [Actions](https://github.com/evheniy/redux-lazy/blob/master/docs/actions.md)
  * [Reducer](https://github.com/evheniy/redux-lazy/blob/master/docs/reducer.md)
+ * [Options](https://github.com/evheniy/redux-lazy/blob/master/docs/options.md)
 
 [More examples](https://github.com/evheniy/redux-lazy/blob/master/tests/container.jsx)

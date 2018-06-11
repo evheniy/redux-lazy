@@ -136,6 +136,7 @@ describe('Testing reducer', () => {
  * [Types](https://github.com/evheniy/redux-lazy/blob/master/docs/types.md)
  * [Actions](https://github.com/evheniy/redux-lazy/blob/master/docs/actions.md)
  * [Container](https://github.com/evheniy/redux-lazy/blob/master/docs/container.md)
+ * [Options](https://github.com/evheniy/redux-lazy/blob/master/docs/options.md)
 
 [More examples](https://github.com/evheniy/redux-lazy/blob/master/tests/reducer.js)
 
