@@ -56,6 +56,48 @@ import rl from './rl';
 const { actions } = rl;
 ```
 
+## Default parameters
+
+When you create action you can set payload.
+It will be a part of default state:
+
+
+```javascript
+rl.addAction('title', { title: 'title' });
+```
+
+Or
+
+```javascript
+const title = 'title';
+
+rl.addAction('title', { title });
+```
+
+And to run:
+
+```javascript
+import rl from '../src/rl'
+
+const { actions } = rl.flush();
+
+const action = actions.titleAction();
+```
+
+It will return:
+
+
+```javascript
+{
+  type: types.POST_TITLE,
+  payload: {
+    title: 'title',
+  },
+}
+```
+
+How to set default state see [docs](https://github.com/evheniy/redux-lazy/blob/master/docs/reducer.md).
+
 ## Testing
 
 ```javascript
