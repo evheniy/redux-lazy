@@ -150,7 +150,7 @@ With payload:
 You can use **asParams** option with **isFormElement**:
 
 ```javascript
-rl.addAction('title', { title: '' }, { isFormElement: true, asParams: true });
+rl.addAction('title', { title: '' }, { isFormElement: true, asParams: 'title' });
 ```
 And put as props:
 
