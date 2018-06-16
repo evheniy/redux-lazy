@@ -387,7 +387,7 @@ describe('Testing actions', () => {
       expect(action.body).to.be.equal(body);
     });
 
-    it('should test action isFormElement option with asParams option and default value and array', () => {
+    it('should test action with empty payload', () => {
       const newRl = new RL('post');
 
       newRl.addAction('load');
