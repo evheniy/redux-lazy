@@ -93,10 +93,18 @@ class RL {
       }
 
       if (!Object.keys(action.options).length) {
-        actions[actionKey] = (payload = action.payload) => ({
-          type: `${this.getNSKey()}/${toConst(action.name)}`,
-          payload,
-        });
+        actions[actionKey] = (payload = action.payload) => {
+          const response = {
+            type: `${this.getNSKey()}/${toConst(action.name)}`,
+            payload,
+          };
+
+          if (!Object.keys(payload).length) {
+            delete response.payload;
+          }
+
+          return response;
+        };
       }
 
       // default state

@@ -386,5 +386,20 @@ describe('Testing actions', () => {
       expect(action.title).to.be.equal(title);
       expect(action.body).to.be.equal(body);
     });
+
+    it('should test action isFormElement option with asParams option and default value and array', () => {
+      const newRl = new RL('post');
+
+      newRl.addAction('load');
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.loadAction();
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_LOAD);
+      expect(action.payload).to.be.equal(undefined);
+    });
   });
 });
