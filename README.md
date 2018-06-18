@@ -53,7 +53,7 @@ const {
 **React — redux for lazy developers:**
  * [Part 1](https://hackernoon.com/react-redux-for-lazy-developers-b551f16a456f)
  * [Part 2](https://hackernoon.com/react-redux-for-lazy-developers-part-2-d0c60123592f)
- * Part 3
+ * [Part 3](https://medium.com/@evheniybystrov/react-redux-for-lazy-developers-part-3-319b639a22c3)
 
 
 ## Documentation
