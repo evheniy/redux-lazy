@@ -5,6 +5,20 @@ When you add action you can set the 3rd parameter - options
 ```javascript
 rl.addAction('title', payload, options);
 ```
+## isEvent
+
+If you are using **[redux-observable](https://redux-observable.js.org/)** you need to send events to epics.
+Each event action should have only the type without any other fields.
+
+```javascript
+rl.addAction('event', {}, { isEvent: true });
+```
+The same result you can get using addEventAction:
+
+```javascript
+rl.addEventAction('event');
+```
+
 ## isForm
 
 When you need action to submit form you need to run event.preventDefault.
@@ -33,6 +47,12 @@ And put as props:
 
 ```html
 <form onSubmit={props.submitAction}>
+```
+
+The same result you can get using addFormAction:
+
+```javascript
+rl.addFormAction('submit');
 ```
 
 ## isFormElement
@@ -170,6 +190,11 @@ It returns:
 }
 ```
 
+The same result you can get using addFormElementAction:
+
+```javascript
+rl.addFormElementAction('title', '');
+```
 
 ## Documentation
 

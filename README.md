@@ -48,6 +48,36 @@ const {
 } = rl.flush();
 ```
 
+### React example
+
+```javascript
+import React from 'react';
+import RL from 'redux-lazy';
+
+const rl = new RL('post');
+
+rl.addFormAction('submit');
+rl.addFormElementAction('title');
+
+const { Container, reducer } = rl.flush();
+
+const FormComponent = props => (
+  <form onSubmit={props.submitAction}>
+    <input
+      type="text"
+      value={props.title}
+      onChange={props.titleAction}
+    />
+  </form>
+);
+
+export default Container(FormComponent);
+
+export { reducer };
+```
+
+Just add reducer to redux and this example should work.
+
 ## Articles
 
 **React — redux for lazy developers:**

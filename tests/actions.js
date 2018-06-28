@@ -401,5 +401,222 @@ describe('Testing actions', () => {
       expect(action.type).to.be.equal(newRlTypes.POST_LOAD);
       expect(action.payload).to.be.equal(undefined);
     });
+
+    it('should test addFormAction without event', () => {
+      const newRl = new RL('post');
+
+      newRl.addFormAction('submit');
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.submitAction();
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_SUBMIT);
+      expect(action).to.be.eql({ type: newRlTypes.POST_SUBMIT });
+    });
+
+    it('should test addFormAction with event', () => {
+      const preventDefault = spy();
+
+      const event = {
+        preventDefault,
+      };
+
+      const newRl = new RL('post');
+
+      newRl.addFormAction('submit');
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.submitAction(event);
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_SUBMIT);
+      expect(action).to.be.eql({ type: newRlTypes.POST_SUBMIT });
+
+      expect(preventDefault.calledOnce).to.be.equal(true);
+    });
+
+    it('should test addFormElementAction without event and defaultState', () => {
+      const newRl = new RL('post');
+
+      newRl.addFormElementAction('test');
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.testAction();
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_TEST);
+      expect(action.test).to.be.equal(null);
+
+      expect(action).to.be.eql({
+        test: null,
+        type: newRlTypes.POST_TEST,
+      });
+    });
+
+    it('should test addFormElementAction without event', () => {
+      const newRl = new RL('post');
+
+      const defaultState = 'defaultState';
+
+      newRl.addFormElementAction('test', defaultState);
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.testAction();
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_TEST);
+      expect(action.test).to.be.equal(defaultState);
+
+      expect(action).to.be.eql({
+        test: defaultState,
+        type: newRlTypes.POST_TEST,
+      });
+    });
+
+    it('should test addFormElementAction with event without defaultState', () => {
+      const newRl = new RL('post');
+
+      const value = 'value';
+
+      const event = {
+        target: {
+          value,
+        },
+      };
+
+      newRl.addFormElementAction('test');
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.testAction(event);
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_TEST);
+      expect(action.test).to.be.equal(value);
+
+      expect(action).to.be.eql({
+        test: value,
+        type: newRlTypes.POST_TEST,
+      });
+    });
+
+    it('should test addFormElementAction with event and defaultState', () => {
+      const newRl = new RL('post');
+
+      const defaultState = 'defaultState';
+      const value = 'value';
+
+      const event = {
+        target: {
+          value,
+        },
+      };
+
+      newRl.addFormElementAction('test', defaultState);
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.testAction(event);
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_TEST);
+      expect(action.test).to.be.equal(value);
+
+      expect(action).to.be.eql({
+        test: value,
+        type: newRlTypes.POST_TEST,
+      });
+    });
+
+    it('should test addAction with isEvent option', () => {
+      const newRl = new RL('post');
+
+      newRl.addAction('event', {}, { isEvent: true });
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.eventAction();
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_EVENT);
+
+      expect(action).to.be.eql({ type: newRlTypes.POST_EVENT });
+    });
+
+    it('should test addAction with isEvent option with data', () => {
+      const newRl = new RL('post');
+
+      newRl.addAction('event', {}, { isEvent: true });
+
+      const value = 'value';
+
+      const event = {
+        target: {
+          value,
+        },
+      };
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.eventAction(event);
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_EVENT);
+
+      expect(action).to.be.eql({ type: newRlTypes.POST_EVENT });
+    });
+
+    it('should test addEventAction', () => {
+      const newRl = new RL('post');
+
+      newRl.addEventAction('event');
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.eventAction();
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_EVENT);
+
+      expect(action).to.be.eql({ type: newRlTypes.POST_EVENT });
+    });
+
+    it('should test addEventAction with data', () => {
+      const newRl = new RL('post');
+
+      newRl.addEventAction('event');
+
+      const value = 'value';
+
+      const event = {
+        target: {
+          value,
+        },
+      };
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.eventAction(event);
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_EVENT);
+
+      expect(action).to.be.eql({ type: newRlTypes.POST_EVENT });
+    });
   });
 });

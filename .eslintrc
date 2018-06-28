@@ -5,6 +5,9 @@
     "browser": true,
     "node": true,
     "mocha": true
+  },
+  "rules": {
+    "react/destructuring-assignment": 0
   }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "redux-lazy",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "redux-lazy",
   "main": "lib/index.js",
   "files": [
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.3",
+    "babel-eslint": "^8.2.5",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -53,11 +53,11 @@
     "coveralls": "^3.0.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.12.0",
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.9.1",
+    "eslint-plugin-react": "^7.10.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^7.0.1",
     "gulp-clean-dest": "^0.2.0",
@@ -73,6 +73,6 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-mock-store": "^1.5.3",
-    "sinon": "^6.0.0"
+    "sinon": "^6.0.1"
   }
 }

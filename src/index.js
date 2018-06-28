@@ -15,6 +15,22 @@ class RL {
     this.actions.push({ name, payload, options });
   }
 
+  addFormAction(name) {
+    this.addAction(name, {}, { isForm: true });
+  }
+
+  addFormElementAction(name, defaultValue = null) {
+    this.addAction(
+      name,
+      { [name]: defaultValue },
+      { isFormElement: true, asParams: name },
+    );
+  }
+
+  addEventAction(name) {
+    this.addAction(name, {}, { isEvent: true });
+  }
+
   getNSKey() {
     return `@@${this.ns}`;
   }
@@ -33,6 +49,11 @@ class RL {
 
       // actions
       const actionKey = `${action.name}Action`;
+
+      // event
+      if (action.options.isEvent) {
+        actions[actionKey] = () => ({ type: `${this.getNSKey()}/${toConst(action.name)}` });
+      }
 
       // submit form
       if (action.options.isForm) {
@@ -78,13 +99,13 @@ class RL {
           const payload = {};
           params.forEach((param, number) => {
             const data = (
-              action.options.isFormElement &&
-              args[number] &&
-              args[number].target &&
-              args[number].target.value !== undefined
-            ) ?
-              args[number].target.value :
-              args[number];
+              action.options.isFormElement
+              && args[number]
+              && args[number].target
+              && args[number].target.value !== undefined
+            )
+              ? args[number].target.value
+              : args[number];
             payload[param] = data || action.payload[param];
           });
 
