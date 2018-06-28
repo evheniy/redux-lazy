@@ -12,6 +12,14 @@ class RL {
   }
 
   addAction(name, payload = {}, options = {}) {
+    if (name === 'type') {
+      throw new Error('Action name should not be "type"! This can create a conflict with redux action creators.');
+    }
+
+    if (payload.type !== undefined) {
+      throw new Error('You should not make "type" fields! This can create a conflict with redux action creators.');
+    }
+
     this.actions.push({ name, payload, options });
   }
 

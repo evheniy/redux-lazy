@@ -618,5 +618,80 @@ describe('Testing actions', () => {
 
       expect(action).to.be.eql({ type: newRlTypes.POST_EVENT });
     });
+
+    it('should test addAction with "type" name', () => {
+      const newRl = new RL('post');
+
+      let isError = false;
+
+      try {
+        newRl.addAction('type');
+      } catch (e) {
+        isError = true;
+        expect(e.message).to.be.equal('Action name should not be "type"! This can create a conflict with redux action creators.');
+      }
+
+      expect(isError).to.be.equal(true);
+    });
+
+    it('should test addAction with "type" payload field', () => {
+      const newRl = new RL('post');
+
+      let isError = false;
+
+      try {
+        newRl.addAction('test', { type: 'test' });
+      } catch (e) {
+        isError = true;
+        expect(e.message).to.be.equal('You should not make "type" fields! This can create a conflict with redux action creators.');
+      }
+
+      expect(isError).to.be.equal(true);
+    });
+
+    it('should test addEventAction with "type" name', () => {
+      const newRl = new RL('post');
+
+      let isError = false;
+
+      try {
+        newRl.addEventAction('type');
+      } catch (e) {
+        isError = true;
+        expect(e.message).to.be.equal('Action name should not be "type"! This can create a conflict with redux action creators.');
+      }
+
+      expect(isError).to.be.equal(true);
+    });
+
+    it('should test addFormAction with "type" name', () => {
+      const newRl = new RL('post');
+
+      let isError = false;
+
+      try {
+        newRl.addFormAction('type');
+      } catch (e) {
+        isError = true;
+        expect(e.message).to.be.equal('Action name should not be "type"! This can create a conflict with redux action creators.');
+      }
+
+      expect(isError).to.be.equal(true);
+    });
+
+    it('should test addFormElementAction with "type" name', () => {
+      const newRl = new RL('post');
+
+      let isError = false;
+
+      try {
+        newRl.addFormElementAction('type');
+      } catch (e) {
+        isError = true;
+        expect(e.message).to.be.equal('Action name should not be "type"! This can create a conflict with redux action creators.');
+      }
+
+      expect(isError).to.be.equal(true);
+    });
   });
 });
