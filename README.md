@@ -89,6 +89,7 @@ Just add reducer to redux and this example should work.
 ## Documentation
 
  * [Install](https://github.com/evheniy/redux-lazy/blob/master/docs/install.md)
+ * [How to use](https://github.com/evheniy/redux-lazy/blob/master/docs/use.md)
  * [Types](https://github.com/evheniy/redux-lazy/blob/master/docs/types.md)
  * [Actions](https://github.com/evheniy/redux-lazy/blob/master/docs/actions.md)
  * [Reducer](https://github.com/evheniy/redux-lazy/blob/master/docs/reducer.md)
