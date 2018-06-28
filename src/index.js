@@ -39,6 +39,22 @@ class RL {
     this.addAction(name, {}, { isEvent: true });
   }
 
+  addParamAction(name, defaultValue = null) {
+    this.addAction(
+      name,
+      { [name]: defaultValue },
+      { asParams: name },
+    );
+  }
+
+  addParamsAction(name, payload = {}) {
+    this.addAction(
+      name,
+      payload,
+      { asParams: Object.keys(payload) },
+    );
+  }
+
   getNSKey() {
     return `@@${this.ns}`;
   }

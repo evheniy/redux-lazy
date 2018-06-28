@@ -693,5 +693,167 @@ describe('Testing actions', () => {
 
       expect(isError).to.be.equal(true);
     });
+
+    it('should test addParamAction', () => {
+      const newRl = new RL('post');
+
+      const defaultValue = 'defaultValue';
+      const value = 'value';
+
+      newRl.addParamAction('test', defaultValue);
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.testAction(value);
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_TEST);
+      expect(action.test).to.be.equal(value);
+
+      expect(action).to.be.eql({
+        test: value,
+        type: newRlTypes.POST_TEST,
+      });
+    });
+
+    it('should test addParamAction without value', () => {
+      const newRl = new RL('post');
+
+      const defaultValue = 'defaultValue';
+
+      newRl.addParamAction('test', defaultValue);
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.testAction();
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_TEST);
+      expect(action.test).to.be.equal(defaultValue);
+
+      expect(action).to.be.eql({
+        test: defaultValue,
+        type: newRlTypes.POST_TEST,
+      });
+    });
+
+    it('should test addParamAction without value and defaultValue', () => {
+      const newRl = new RL('post');
+
+      newRl.addParamAction('test');
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.testAction();
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_TEST);
+      expect(action.test).to.be.equal(null);
+
+      expect(action).to.be.eql({
+        test: null,
+        type: newRlTypes.POST_TEST,
+      });
+    });
+
+    it('should test addParamsAction', () => {
+      const newRl = new RL('post');
+
+      const payload = {
+        field1: 'field1',
+        field2: 'field2',
+      };
+
+      newRl.addParamsAction('test', payload);
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.testAction(1, 2);
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_TEST);
+      expect(action.field1).to.be.equal(1);
+      expect(action.field2).to.be.equal(2);
+
+      expect(action).to.be.eql({
+        field1: 1,
+        field2: 2,
+        type: newRlTypes.POST_TEST,
+      });
+    });
+
+    it('should test addParamsAction with only first value', () => {
+      const newRl = new RL('post');
+
+      const payload = {
+        field1: 'field1',
+        field2: 'field2',
+      };
+
+      newRl.addParamsAction('test', payload);
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.testAction(1);
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_TEST);
+      expect(action.field1).to.be.equal(1);
+      expect(action.field2).to.be.equal('field2');
+
+      expect(action).to.be.eql({
+        field1: 1,
+        field2: 'field2',
+        type: newRlTypes.POST_TEST,
+      });
+    });
+
+    it('should test addParamsAction without values', () => {
+      const newRl = new RL('post');
+
+      const payload = {
+        field1: 'field1',
+        field2: 'field2',
+      };
+
+      newRl.addParamsAction('test', payload);
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.testAction();
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_TEST);
+      expect(action.field1).to.be.equal('field1');
+      expect(action.field2).to.be.equal('field2');
+
+      expect(action).to.be.eql({
+        field1: 'field1',
+        field2: 'field2',
+        type: newRlTypes.POST_TEST,
+      });
+    });
+
+    it('should test addParamsAction with empty payload', () => {
+      const newRl = new RL('post');
+
+      newRl.addParamsAction('test');
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.testAction();
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_TEST);
+
+      expect(action).to.be.eql({ type: newRlTypes.POST_TEST });
+    });
   });
 });

@@ -130,7 +130,14 @@ With payload:
   title: 'text',
 }
 ```
-You can put many parameters:
+
+The same result you can get using addFormElementAction:
+
+```javascript
+rl.addParamAction('title', '');
+```
+
+**You can put many parameters**:
 
 ```javascript
 rl.addAction('clear', { title: '', body: '' }, { asParams: ['title', 'body'] });
@@ -163,6 +170,12 @@ With payload:
   title: '',
   body: '',
 }
+```
+
+The same result you can get using addFormElementAction:
+
+```javascript
+rl.addParamsAction('clear', { title: '', body: '' });
 ```
 
 ## asParams with isFormElement
