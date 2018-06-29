@@ -85,6 +85,7 @@ Just add reducer to redux and this example should work.
  * [Part 2](https://hackernoon.com/react-redux-for-lazy-developers-part-2-d0c60123592f)
  * [Part 3](https://medium.com/@evheniybystrov/react-redux-for-lazy-developers-part-3-319b639a22c3)
 
+**[React/Redux development on steroids](https://medium.com/@evheniybystrov/react-redux-development-on-steroids-95dfed7e7a85)**
 
 ## Documentation
 
