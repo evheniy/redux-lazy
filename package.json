@@ -8,14 +8,14 @@
   ],
   "scripts": {
     "test": "npm-run-all test:*",
-    "release": "npm run build && npm publish",
     "test:security": "nsp check",
     "test:lint": "eslint . --ext .js,.jsx",
     "test:coverage": "nyc mocha tests/*.{js,jsx}",
     "report": "cat ./coverage/lcov.info | coveralls",
     "build": "NODE_ENV=production gulp",
     "precommit": "npm t",
-    "prepush": "npm t"
+    "prepush": "npm t",
+    "release": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",
