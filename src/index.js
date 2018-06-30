@@ -130,7 +130,7 @@ class RL {
             )
               ? args[number].target.value
               : args[number];
-            payload[param] = data || action.payload[param];
+            payload[param] = data !== undefined ? data : action.payload[param];
           });
 
           return { ...payload, type };

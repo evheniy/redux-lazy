@@ -855,5 +855,25 @@ describe('Testing actions', () => {
 
       expect(action).to.be.eql({ type: newRlTypes.POST_TEST });
     });
+
+    it('should test addParamAction with boolean', () => {
+      const newRl = new RL('post');
+
+      newRl.addParamAction('test', true);
+
+      const { types: newRlTypes, actions: newRlActions } = newRl.flush();
+
+      const action = newRlActions.testAction(false);
+
+      expect(action).to.be.a('object');
+
+      expect(action.type).to.be.equal(newRlTypes.POST_TEST);
+      expect(action.test).to.be.equal(false);
+
+      expect(action).to.be.eql({
+        test: false,
+        type: newRlTypes.POST_TEST,
+      });
+    });
   });
 });

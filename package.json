@@ -1,18 +1,19 @@
 {
   "name": "redux-lazy",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "redux-lazy",
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
   "scripts": {
-    "build": "NODE_ENV=production gulp",
     "test": "npm-run-all test:*",
+    "release": "npm run build && npm publish",
     "test:security": "nsp check",
     "test:lint": "eslint . --ext .js,.jsx",
     "test:coverage": "nyc mocha tests/*.{js,jsx}",
     "report": "cat ./coverage/lcov.info | coveralls",
+    "build": "NODE_ENV=production gulp",
     "precommit": "npm t",
     "prepush": "npm t"
   },
@@ -50,7 +51,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
-    "coveralls": "^3.0.1",
+    "coveralls": "^3.0.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^5.0.1",
