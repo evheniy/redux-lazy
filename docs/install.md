@@ -45,6 +45,31 @@ const {
 } = rl.flush();
 ```
 
+You can export each type and action:
+
+```javascript
+const {
+  nameSpace,
+  types,
+  actions,
+  ...
+} = rl.flush();
+
+const { titleAction, bodyAction } = actions;
+const { POST_TITLE, POST_BODY } = types;
+
+export default rl;
+
+export {
+  nameSpace,
+  titleAction,
+  bodyAction,
+  POST_TITLE,
+  POST_BODY,
+};
+```
+This will help you to avoid magic in code.
+
 ## Default state
 
 When you add action to Redux Lazy you can set payload.
