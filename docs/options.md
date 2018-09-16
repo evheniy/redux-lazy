@@ -216,7 +216,7 @@ To reset you state to default you need to set isReset option
 ```javascript
 rl.addAction('reset', {}, { isReset: true });
 ```
-The same result you can get using addEventAction:
+The same result you can get using addResetAction:
 
 ```javascript
 rl.addResetAction();
@@ -234,10 +234,11 @@ And run it in your code as:
 clearAction();
 ```
 
-If you set up default state with actions state will be merged:
+If you set up default state with actions, state will be merged:
 
 ```javascript
 const rl = new RL('post', { test: true });
+
 rl.addParamAction(title, 'title');
 ```
 
@@ -251,6 +252,7 @@ To return exactly the same state use exactly option:
 
 ```javascript
 const rl = new RL('post', { test: true });
+
 rl.addParamAction(title, 'title');
 rl.addResetAction('clear', true);
 ```
