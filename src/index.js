@@ -160,12 +160,14 @@ class RL {
     // full default state
     Object.assign(defaultState, this.defaultState);
 
-    const reducer = (state = defaultState, action) => {
+    const reducer = (state, action) => {
+      const newState = state || defaultState;
+
       if (Object.values(types).includes(action.type)) {
-        return { ...state, ...action, ...action.payload };
+        return { ...newState, ...action, ...action.payload };
       }
 
-      return state;
+      return newState;
     };
 
     const mapStateToProps = state => state[nameSpace];
