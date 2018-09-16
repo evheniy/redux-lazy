@@ -103,11 +103,59 @@ describe('Testing reducer', () => {
       const {
         types: newRlTypes,
         reducer: newRlReducer,
-      } = rl.flush();
+      } = newRl.flush();
 
       const state = newRlReducer(undefined, { type: newRlTypes.POST_TITLE, title });
 
       expect(state.title).to.be.equal(title);
+    });
+
+    it('should test defaultState', () => {
+      const prevState = {};
+
+      const newRl = new RL('post', prevState);
+
+      const { reducer: newRlReducer } = newRl.flush();
+
+      const state = newRlReducer(undefined, { type: 'test' });
+
+      expect(JSON.stringify(state)).to.be.equal(JSON.stringify(prevState));
+    });
+
+    it('should test defaultState', () => {
+      const prevState = {};
+
+      const newRl = new RL('post', prevState);
+
+      const { reducer: newRlReducer } = newRl.flush();
+
+      const state = newRlReducer(prevState, { type: 'test' });
+
+      expect(JSON.stringify(state)).to.be.equal(JSON.stringify(prevState));
+    });
+
+    it('should test wrong type', () => {
+      const prevState = {};
+
+      const newRl = new RL('post');
+
+      const { reducer: newRlReducer } = newRl.flush();
+
+      const state = newRlReducer(prevState, { type: 'test' });
+
+      expect(state).to.be.equal(prevState);
+    });
+
+    it('should test wrong type', () => {
+      const prevState = {};
+
+      const newRl = new RL('post');
+
+      const { reducer: newRlReducer } = newRl.flush();
+
+      const state = newRlReducer(undefined, { type: 'test' });
+
+      expect(JSON.stringify(state)).to.be.equal(JSON.stringify(prevState));
     });
   });
 });

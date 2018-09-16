@@ -55,6 +55,10 @@ class RL {
     );
   }
 
+  addResetAction(name = 'reset', exactly = false) {
+    this.addAction(name, {}, { isReset: true, exactly });
+  }
+
   getNSKey() {
     return `@@${this.ns}`;
   }
@@ -69,14 +73,21 @@ class RL {
     this.actions.forEach((action) => {
       // types
       const typeKey = `${toConst(this.ns)}_${toConst(action.name)}`;
-      types[typeKey] = `${this.getNSKey()}/${toConst(action.name)}`;
+      const type = `${this.getNSKey()}/${toConst(action.name)}`;
+      types[typeKey] = type;
 
       // actions
       const actionKey = `${action.name}Action`;
 
+      // reset
+      if (action.options.isReset) {
+        const returnState = action.options.exactly ? this.defaultState : defaultState;
+        actions[actionKey] = () => ({ type, ...returnState });
+      }
+
       // event
       if (action.options.isEvent) {
-        actions[actionKey] = () => ({ type: `${this.getNSKey()}/${toConst(action.name)}` });
+        actions[actionKey] = () => ({ type });
       }
 
       // submit form
@@ -86,9 +97,7 @@ class RL {
             event.preventDefault();
           }
 
-          return {
-            type: `${this.getNSKey()}/${toConst(action.name)}`,
-          };
+          return { type };
         };
       }
 
@@ -103,10 +112,7 @@ class RL {
             });
           }
 
-          return {
-            type: `${this.getNSKey()}/${toConst(action.name)}`,
-            payload,
-          };
+          return { type, payload };
         };
       }
 
@@ -116,8 +122,6 @@ class RL {
         if (!Array.isArray(params)) {
           params = [params];
         }
-
-        const type = `${this.getNSKey()}/${toConst(action.name)}`;
 
         actions[actionKey] = (...args) => {
           const payload = {};
@@ -139,10 +143,7 @@ class RL {
 
       if (!Object.keys(action.options).length) {
         actions[actionKey] = (payload = action.payload) => {
-          const response = {
-            type: `${this.getNSKey()}/${toConst(action.name)}`,
-            payload,
-          };
+          const response = { type, payload };
 
           if (!Object.keys(payload).length) {
             delete response.payload;
@@ -168,7 +169,7 @@ class RL {
     };
 
     const mapStateToProps = state => state[nameSpace];
-    const mapDispatchToProps = Object.assign({}, actions);
+    const mapDispatchToProps = { ...actions };
 
     const Container = connect(mapStateToProps, mapDispatchToProps);
 

@@ -11,7 +11,7 @@
   "check-coverage": true,
   "per-file": false,
   "statements": 100,
-  "branches": 100,
+  "branches": 98,
   "functions": 100,
   "lines": 100,
   "reporter": [

@@ -1,12 +1,5 @@
-require('babel-register')({
-  presets: [
-    'react',
-    'env',
-  ],
-  plugins: [
-    'transform-object-rest-spread',
-  ],
-});
+require('@babel/register');
+
 const { configure } = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
 

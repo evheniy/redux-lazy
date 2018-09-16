@@ -209,6 +209,58 @@ The same result you can get using addFormElementAction:
 rl.addFormElementAction('title', '');
 ```
 
+## isReset
+
+To reset you state to default you need to set isReset option
+
+```javascript
+rl.addAction('reset', {}, { isReset: true });
+```
+The same result you can get using addEventAction:
+
+```javascript
+rl.addResetAction();
+```
+
+If you need to rename you action you can set name:
+
+```javascript
+rl.addResetAction('clear');
+```
+
+And run it in your code as:
+
+```javascript
+clearAction();
+```
+
+If you set up default state with actions state will be merged:
+
+```javascript
+const rl = new RL('post', { test: true });
+rl.addParamAction(title, 'title');
+```
+
+resetAction will return:
+
+```javascript
+{ test: true, title: 'title' }
+```
+
+To return exactly the same state use exactly option:
+
+```javascript
+const rl = new RL('post', { test: true });
+rl.addParamAction(title, 'title');
+rl.addResetAction('clear', true);
+```
+
+clearAction will return:
+
+```javascript
+{ test: true }
+```
+
 ## Documentation
 
  * [Install](https://github.com/evheniy/redux-lazy/blob/master/docs/install.md)
