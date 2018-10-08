@@ -164,7 +164,15 @@ class RL {
       const newState = state || defaultState;
 
       if (Object.values(types).includes(action.type)) {
-        return { ...newState, ...action, ...action.payload };
+        const returnState = {
+          ...newState,
+          ...action,
+          ...action.payload,
+        };
+
+        delete returnState.type;
+
+        return returnState;
       }
 
       return newState;

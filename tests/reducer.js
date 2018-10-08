@@ -157,5 +157,27 @@ describe('Testing reducer', () => {
 
       expect(JSON.stringify(state)).to.be.equal(JSON.stringify(prevState));
     });
+
+    it('should test empty type', () => {
+      const newRl = new RL('post');
+
+      newRl.addParamAction('title');
+      newRl.addEventAction('event');
+
+      const {
+        actions: {
+          titleAction,
+          eventAction,
+        },
+        reducer: newRlReducer,
+      } = newRl.flush();
+
+      const state = newRlReducer(
+        newRlReducer(undefined, titleAction('test')),
+        eventAction(),
+      );
+
+      expect(state).to.be.eql({ title: 'test' });
+    });
   });
 });
